@@ -7,11 +7,15 @@ import SignUpPage from "./pages/SignUpPage";
 import UserPage from "./pages/UserPage";
 import LoginPage from "./pages/LoginPage";
 import { useSelector, useDispatch } from "react-redux";
+import { logout } from "./actions/loginActions";
 
 function App() {
   const history = useHistory();
-  const loggedIn = useSelector((state) => state.loggedIn);
-  const member = useSelector((state) => state.member);
+  const loggedIn = useSelector((state) => state.login.loggedIn);
+  const loggedInName = useSelector((state) => state.login.loggedInName);
+
+  // const loggedIn = useSelector((state) => state.loggedIn);
+  // const member = useSelector((state) => state.member);
   const dispatch = useDispatch();
 
   function logInHandler() {
@@ -19,10 +23,10 @@ function App() {
   }
 
   function logOutHandler() {
-    dispatch({
-      type: "LOGOUT MEMBER",
-    });
-    history.push("/");
+    if (loggedIn) {
+      dispatch(logout(loggedInName));
+      history.push("/");
+    }
   }
 
   function goToSignUp() {
@@ -32,7 +36,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p className={loggedIn ? "float-right" : "disappear"}>Hello {member}</p>
+        <p className={loggedIn ? "float-right" : "disappear"}>
+          Hello {loggedInName}
+        </p>
         <button
           className={loggedIn ? "btn btn-primary float-right" : "disappear"}
           onClick={logOutHandler}

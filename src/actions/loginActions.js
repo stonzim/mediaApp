@@ -3,6 +3,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
+  LOGOUT_SUCCESS,
 } from "../types/loginTypes";
 
 export function loginRequest() {
@@ -24,21 +25,34 @@ export function loginFailure(error) {
     payload: error,
   };
 }
-// const initalState = [initialMembers, { loggedIn: false }, { member: "" }];
 
-// function check(state, login) {
-//   if (
-//     state[0].some(
-//       (v) => v.userName === login.userName && v.password === login.password
-//     ) === true
-//   ) {
-//     alert("Welcome " + login.userName);
-//     return [state[0], { loggedIn: true }, { member: login.userName }];
-//   } else {
-//     alert("Unrecognised user name or password. Please try again");
-//     return [state[0], { loggedIn: false }, { member: "" }];
-//   }
-// }
-export function login(username, password) {}
+export function logoutSuccess() {
+  return {
+    type: LOGOUT_SUCCESS,
+  };
+}
 
-export function logout() {}
+export function login(username, password) {
+  return (dispatch) => {
+    dispatch(loginRequest());
+    axios
+      .post("/login", { username: username, password: password })
+      .then((response) => {
+        const loggedInUsername = response.data[0].username;
+        dispatch(loginSuccess(loggedInUsername));
+        alert("Welcome " + loggedInUsername);
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        dispatch(loginFailure(errorMessage));
+        alert(errorMessage);
+      });
+  };
+}
+
+export function logout(username) {
+  return (dispatch) => {
+    dispatch(logoutSuccess());
+    alert("Farewall " + username);
+  };
+}

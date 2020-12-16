@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../actions/loginActions";
@@ -8,8 +8,11 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const history = useHistory();
   const dispatch = useDispatch();
-  const loggedIn = useSelector((state) => state.memberReducer[1].loggedIn);
-  const [user, setUser] = useState("");
+  // const loggedIn = useSelector((state) => state.memberReducer[1].loggedIn);
+  const loggedIn = useSelector((state) => state.login.loggedIn);
+  // const loggedInName = useSelector((state) => state.login.loggedInName);
+
+  // const [user, setUser] = useState("");
 
   function addUserNameHandler(e) {
     setUserName(e.target.value);
@@ -27,17 +30,9 @@ function LoginPage() {
         alert("Please enter your password");
       } else {
         dispatch(login(userName, password));
-        // fetch(`/login/:${userName}`)
-        //   .then((res) => res.json())
-        //   .then((user) => setUser(user));
+        history.push("/");
       }
-      // dispatch({
-      //   type: "CHECK MEMBER",
-      //   payload: { userName, password },
-      // });
-      alert(user);
-
-      history.push("/");
+      // history.push("/");
     }
   }
 

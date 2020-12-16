@@ -2,6 +2,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
+  LOGOUT_SUCCESS,
 } from "../types/loginTypes";
 
 const initialstate = {
@@ -33,6 +34,14 @@ function loginReducer(state = initialstate, action) {
         loggedIn: false,
         loggedInName: "",
         error: action.payload,
+      };
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        loggedIn: false,
+        loggedInName: "",
+        error: "",
       };
     default:
       return state;
