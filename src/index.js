@@ -4,20 +4,15 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { createStore, applyMiddleware, combineReducers } from "redux";
-import memberReducer from "./store/membersReducer";
-// import loggedInReducer from "./store/loggedInReducer";
+import { createStore, applyMiddleware } from "redux";
+// import memberReducer from "./store/membersReducer";
+// import loggedInReducer from "./store/loginReducer";
+import rootReducer from "./store/rootReducer";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import "bootstrap/dist/css/bootstrap.css";
 
-const store = createStore(
-  // combineReducers({
-  memberReducer,
-  // loggedInReducer,
-  applyMiddleware(thunk)
-  // })
-);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <React.StrictMode>

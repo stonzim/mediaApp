@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { login } from "../actions/loginActions";
 
 function LoginPage() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const loggedIn = useSelector((state) => state.memberReducer[1].loggedIn);
   const [user, setUser] = useState("");
 
@@ -22,12 +23,13 @@ function LoginPage() {
     if (!loggedIn) {
       if (userName === "") {
         alert("Please enter your user name");
-        // } else if (password === "") {
-        //   alert("Please enter your password");
+      } else if (password === "") {
+        alert("Please enter your password");
       } else {
-        fetch(`/login/:${userName}`)
-          .then((res) => res.json())
-          .then((user) => setUser(user));
+        dispatch(login(userName, password));
+        // fetch(`/login/:${userName}`)
+        //   .then((res) => res.json())
+        //   .then((user) => setUser(user));
       }
       // dispatch({
       //   type: "CHECK MEMBER",

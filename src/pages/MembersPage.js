@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import NameTag from "../components/NameTag";
 import useMembers from "../hooks/useMember";
 import { useSelector, useDispatch } from "react-redux";
-import Loader from "react-loader-spinner";
-// import Spinner from "bootstrap";
 import { fetchUsers } from "../actions/memberActions";
 
 function FriendsPage() {
@@ -11,9 +9,9 @@ function FriendsPage() {
   const [count, setCount] = useState(1);
   const [message, setMessage] = useState("");
   const members = useMembers();
-  const users = useSelector((state) => state.members);
-  const loading = useSelector((state) => state.loading);
-  const error = useSelector((state) => state.error);
+  const users = useSelector((state) => state.members.members);
+  const loading = useSelector((state) => state.members.loading);
+  const error = useSelector((state) => state.members.error);
   const dispatch = useDispatch();
 
   function changeMessage(e) {
@@ -47,8 +45,8 @@ function FriendsPage() {
     <div>
       <h3>
         {loading ? (
-          <div class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
+          <div className="spinner-border" role="status">
+            <span className="sr-only">Loading...</span>
           </div>
         ) : error !== "" ? (
           error

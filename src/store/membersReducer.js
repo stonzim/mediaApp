@@ -2,7 +2,7 @@ import {
   FETCH_MEMBERS_REQUEST,
   FETCH_MEMBERS_SUCCESS,
   FETCH_MEMBERS_FAILURE,
-} from "../actions/memberActions";
+} from "../types/memberTypes";
 
 const initialState = {
   loading: false,
@@ -26,7 +26,7 @@ const initialState = {
 //   }
 // }
 
-function reducer(state = initialState, action) {
+function membersReducer(state = initialState, action) {
   switch (action.type) {
     case FETCH_MEMBERS_REQUEST:
       return {
@@ -65,4 +65,4 @@ function reducer(state = initialState, action) {
   }
 }
 
-export default reducer;
+export default membersReducer;
