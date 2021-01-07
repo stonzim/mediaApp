@@ -2,17 +2,14 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../actions/loginActions";
+import "../App.scss";
 
 function LoginPage() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
   const dispatch = useDispatch();
-  // const loggedIn = useSelector((state) => state.memberReducer[1].loggedIn);
   const loggedIn = useSelector((state) => state.login.loggedIn);
-  // const loggedInName = useSelector((state) => state.login.loggedInName);
-
-  // const [user, setUser] = useState("");
 
   function addUserNameHandler(e) {
     setUserName(e.target.value);
@@ -32,40 +29,64 @@ function LoginPage() {
         dispatch(login(userName, password));
         history.push("/");
       }
-      // history.push("/");
     }
   }
 
   return (
     <div>
-      <h3>Please log in below</h3>
-      <table>
-        <tbody>
-          <tr>
-            <td>User Name</td>
-            <td>
-              <input
-                type="text"
-                value={userName}
-                onChange={addUserNameHandler}
-              ></input>
-            </td>
-          </tr>
-          <tr>
-            <td>Password</td>
-            <td>
-              <input
-                type="password"
-                value={password}
-                onChange={addPasswordHandler}
-              ></input>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <button className="btn btn-primary" onClick={logInHandler}>
-        Log in
-      </button>
+      <div className="container  dark">
+        <div className="row h-100 align-items-center">
+          <div className="col-md-7">
+            <div>
+              <h1>Stalktalk</h1>
+              <h4>
+                Stalktalk helps you to talk to people in your life, and stalk
+                those who were in your life
+              </h4>
+            </div>
+          </div>
+          <div className="col-md-5">
+            <h3>Please log in below</h3>
+            <form>
+              <div className="form-group row">
+                <label className="col-sm-4 col-form-label">Username</label>
+                <div className="col-sm-8">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Username"
+                    value={userName}
+                    onChange={addUserNameHandler}
+                  />
+                </div>
+              </div>
+              <div className="form-group row">
+                <label className="col-sm-4 col-form-label">Password</label>
+                <div className="col-sm-8">
+                  <input
+                    type="password"
+                    className="form-control"
+                    placeholder="Password"
+                    value={password}
+                    onChange={addPasswordHandler}
+                  />
+                </div>
+              </div>
+              <div className="form-group row">
+                <div className="col-sm-10 offset-sm-2">
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                    onClick={logInHandler}
+                  >
+                    Log in
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

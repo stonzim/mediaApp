@@ -8,7 +8,7 @@ import {
 const initialstate = {
   loading: false,
   loggedIn: false,
-  loggedInName: "",
+  loggedInUser: {},
   error: "",
 };
 
@@ -24,7 +24,7 @@ function loginReducer(state = initialstate, action) {
         ...state,
         loading: false,
         loggedIn: true,
-        loggedInName: action.payload,
+        loggedInUser: action.payload,
         error: "",
       };
     case LOGIN_FAILURE:
@@ -32,7 +32,7 @@ function loginReducer(state = initialstate, action) {
         ...state,
         loading: false,
         loggedIn: false,
-        loggedInName: "",
+        loggedInUser: {},
         error: action.payload,
       };
     case LOGOUT_SUCCESS:
@@ -40,7 +40,7 @@ function loginReducer(state = initialstate, action) {
         ...state,
         loading: false,
         loggedIn: false,
-        loggedInName: "",
+        loggedInUser: {},
         error: "",
       };
     default:

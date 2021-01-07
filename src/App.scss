@@ -1,59 +1,66 @@
-.App {
+@import "~bootstrap/scss/bootstrap";
+
+.container {
   text-align: center;
+  color: #ce961f;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#back-drop {
+  background-color: #171f24;
+  background-size: cover;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App-title {
+  font-size: 80px;
 }
 
 .App-header {
-  background-color: #282c34;
+  height: 100vh;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #383c4a;
 }
 
+// ----------Topbar----------
+#topbar {
+  height: 2rem;
+  background-color: #383c4a;
+}
+// ----------Topbar----------
+// -------------------------------------------------------------------------
+// ----------Navbar----------
+#navbar {
+  background-color: #bcbfc6;
+}
+.logo {
+  height: 4rem;
+}
 .App-link {
-  color: #61dafb;
+  font-size: 35px;
+  height: 20px;
   text-decoration: none;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .link-active-style {
   color: blue;
 }
-
 .ul-style {
   display: flex;
 }
-
 .li-style {
   width: 150px;
   list-style-type: none;
 }
+.name-style {
+  font-size: 30px;
+  color: #ce961f;
+  list-style-type: none;
+  margin-left: auto;
+}
+// ----------Navbar----------
+// -------------------------------------------------------------------------
 
-.button-style {
-  width: 75px;
-  padding: 5px;
+#greeting-box {
+  font-size: 30px;
+  width: 200px;
 }
 
 .disappear {
@@ -68,3 +75,45 @@
   width: 100px;
   margin: 5px;
 }
+
+.float-right {
+  margin-left: auto;
+}
+// -------------------------------------------------------------------------
+// ----------Userpage----------
+.profile-banner {
+  position: relative;
+  background-color: #ababab;
+  height: 180px;
+  margin-bottom: 45px;
+  border-radius: 0 0 25px 25px;
+}
+
+.picname {
+  position: absolute;
+  color: white;
+  bottom: -55px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+// .picname > h3 {
+//   color: white;
+// }
+// ----------Userpage----------
+// -------------------------------------------------------------------------
+.rounded-bottom {
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+// -------------------------------------------------------------------------
+// ----------Misc.----------
+.default-background {
+  background-image: url("../src/profilePics/forest.jpg");
+}
+.dark {
+  background-color: #383c4a;
+}
+// ----------Misc.----------

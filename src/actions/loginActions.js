@@ -38,9 +38,9 @@ export function login(username, password) {
     axios
       .post("/login", { username: username, password: password })
       .then((response) => {
-        const loggedInUsername = response.data[0].username;
-        dispatch(loginSuccess(loggedInUsername));
-        alert("Welcome " + loggedInUsername);
+        const loggedInUser = response.data[0];
+        dispatch(loginSuccess(loggedInUser));
+        alert("Welcome " + loggedInUser.username);
       })
       .catch((error) => {
         const errorMessage = error.message;
