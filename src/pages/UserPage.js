@@ -16,6 +16,7 @@ function UserPage() {
   const photos = useSelector((state) => state.photos.photos);
   const posts = useSelector((state) => state.posts.posts);
   const friendsPreview = friends.slice(0, 5);
+
   function getAge() {
     const today = new Date();
     const bd = new Date(loggedInUser.birthdate);
@@ -104,7 +105,7 @@ function UserPage() {
         </div>
       </TabPanel>
       <TabPanel>
-        <div className="posts-tab">
+        <div className="posts-block">
           {posts.map((p) => (
             <Post
               className="thumb"
@@ -173,12 +174,9 @@ function UserPage() {
             <div className="overlay"></div>
           </div>
           <div className="col-1"></div>
-          {/* <div className="col-1"></div> */}
         </div>
         <div className="row">
-          {/* <div className="row"> */}
           <div className="col-1"></div>
-          {/* <div className="col-1"></div> */}
           <div className="col-4 friends-block">
             <div className="row friends-header">
               <div className="col-3">
@@ -201,29 +199,19 @@ function UserPage() {
             </div>
             <div className="row">
               <div className="col-2"></div>
-              <div className="col-8 friends-button">
-                {" "}
-                {/* <button>See all friends</button> */}
-              </div>
+              <div className="col-8 friends-button"> </div>
               <div className="col-2"></div>
             </div>
           </div>
-          {/* <div className="col-1"></div> */}
           <div className="col-6 misc-block">{displayPosts}</div>
-          {/* <div className="col-6 blah">{displayPosts}</div> */}
           <div className="col-1"></div>
-          {/* <div className="col-1"></div> */}
         </div>
         <div className="row">
-          {/* <div className="row"> */}
           <div className="col-1"></div>
-          {/* <div className="col-1"></div> */}
           <div className="col-10 footer">
             <p>Application made as a non-commercial exercise</p>
           </div>
-          {/* <div className="col-10 footer">stuff</div> */}
           <div className="col-1"></div>
-          {/* <div className="col-1"></div> */}
         </div>
       </div>
     </div>
