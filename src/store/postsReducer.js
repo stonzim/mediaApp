@@ -1,34 +1,34 @@
 import {
-  FETCH_MEMBERS_REQUEST,
-  FETCH_MEMBERS_SUCCESS,
-  FETCH_MEMBERS_FAILURE,
-} from "../types/memberTypes";
+  FETCH_POSTS_REQUEST,
+  FETCH_POSTS_SUCCESS,
+  FETCH_POSTS_FAILURE,
+} from "../types/postTypes";
 
 const initialState = {
   loading: false,
-  members: [],
+  posts: [],
   error: "",
 };
 
-function membersReducer(state = initialState, action) {
+function postsReducer(state = initialState, action) {
   switch (action.type) {
-    case FETCH_MEMBERS_REQUEST:
+    case FETCH_POSTS_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case FETCH_MEMBERS_SUCCESS:
+    case FETCH_POSTS_SUCCESS:
       return {
         ...state,
         loading: false,
-        members: action.payload,
+        posts: action.payload,
         error: "",
       };
-    case FETCH_MEMBERS_FAILURE:
+    case FETCH_POSTS_FAILURE:
       return {
         ...state,
         loading: false,
-        members: [],
+        posts: [],
         error: action.payload,
       };
     default:
@@ -36,4 +36,4 @@ function membersReducer(state = initialState, action) {
   }
 }
 
-export default membersReducer;
+export default postsReducer;

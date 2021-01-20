@@ -1,34 +1,34 @@
 import {
-  FETCH_MEMBERS_REQUEST,
-  FETCH_MEMBERS_SUCCESS,
-  FETCH_MEMBERS_FAILURE,
-} from "../types/memberTypes";
+  FETCH_FRIENDS_REQUEST,
+  FETCH_FRIENDS_SUCCESS,
+  FETCH_FRIENDS_FAILURE,
+} from "../types/friendTypes";
 
 const initialState = {
   loading: false,
-  members: [],
+  friends: [],
   error: "",
 };
 
-function membersReducer(state = initialState, action) {
+function friendsReducer(state = initialState, action) {
   switch (action.type) {
-    case FETCH_MEMBERS_REQUEST:
+    case FETCH_FRIENDS_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case FETCH_MEMBERS_SUCCESS:
+    case FETCH_FRIENDS_SUCCESS:
       return {
         ...state,
         loading: false,
-        members: action.payload,
+        friends: action.payload,
         error: "",
       };
-    case FETCH_MEMBERS_FAILURE:
+    case FETCH_FRIENDS_FAILURE:
       return {
         ...state,
         loading: false,
-        members: [],
+        friends: [],
         error: action.payload,
       };
     default:
@@ -36,4 +36,4 @@ function membersReducer(state = initialState, action) {
   }
 }
 
-export default membersReducer;
+export default friendsReducer;

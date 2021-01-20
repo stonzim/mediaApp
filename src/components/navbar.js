@@ -29,9 +29,9 @@ function Navbar() {
           </div>
           <div className="col-2">
             <p className="name-style">Hi {loggedInUser.username}</p>
-          </div>{" "}
+          </div>
           <div className="col-7">
-            <ul className="ul-style rounded-bottom">
+            <ul className="ul-style">
               <li className="li-style">
                 <NavLink
                   className="App-link"

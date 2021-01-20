@@ -3,10 +3,11 @@
 .container {
   text-align: center;
   color: #ce961f;
+  clear: left;
 }
 
 #back-drop {
-  background-color: #171f24;
+  background-color: #c3dae6;
   background-size: cover;
 }
 
@@ -17,43 +18,52 @@
 .App-header {
   height: 100vh;
   min-height: 100vh;
-  background-color: #383c4a;
+  background-color: #c3dae6;
 }
 
 // ----------Topbar----------
 #topbar {
   height: 2rem;
-  background-color: #383c4a;
+  background-color: #c3dae6;
+  padding-top: 2px;
+}
+
+#topbar p {
+  color: #383c4a;
 }
 // ----------Topbar----------
 // -------------------------------------------------------------------------
 // ----------Navbar----------
 #navbar {
-  background-color: #bcbfc6;
+  background-color: #264653;
 }
 .logo {
   height: 4rem;
+  margin-left: -15px;
 }
 .App-link {
-  font-size: 35px;
-  height: 20px;
+  font-size: 30px;
   text-decoration: none;
 }
 .link-active-style {
-  color: blue;
+  color: #ce961f;
 }
 .ul-style {
   display: flex;
 }
 .li-style {
+  margin-top: 1.5%;
   width: 150px;
   list-style-type: none;
 }
 .name-style {
+  margin-top: 3%;
   font-size: 30px;
   color: #ce961f;
   list-style-type: none;
-  margin-left: auto;
+}
+.nav-button {
+  margin-right: -15px;
 }
 // ----------Navbar----------
 // -------------------------------------------------------------------------
@@ -62,20 +72,12 @@
   font-size: 30px;
   width: 200px;
 }
-
 .disappear {
   display: none;
 }
-
 .float-right {
   align-self: flex-end;
 }
-
-.btn {
-  width: 100px;
-  margin: 5px;
-}
-
 .float-right {
   margin-left: auto;
 }
@@ -84,29 +86,142 @@
 .profile-banner {
   position: relative;
   background-color: #ababab;
-  height: 180px;
+  height: 220px;
   margin-bottom: 45px;
-  border-radius: 0 0 25px 25px;
+  z-index: 0;
 }
+// .userpage {
+//   display: grid;
+// }
+.overlay {
+  height: 50px;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+  bottom: 0%;
+  position: absolute;
+  z-index: 1;
+  margin-left: -15px;
 
-.picname {
+  text-align: center;
+}
+.profile-pic {
   position: absolute;
   color: white;
-  bottom: -55px;
+  bottom: -40px;
   margin-left: auto;
   margin-right: auto;
-  left: 0;
+  left: -700px;
   right: 0;
+  z-index: 2;
+}
+.username {
+  position: absolute;
+  color: white;
+  position: absolute;
+  left: 210px;
+  top: 175px;
+  z-index: 2;
+}
+// .container-fluid {
+//   padding: 0;
+// }
+
+.info-block {
+  // margin-top: 30px;
+  margin-bottom: 30px;
+  // background-color: #ffe39e;
+  // color: #264653;
+}
+// .info-block tr:nth-child(even) {
+//   background: #ffe39e;
+// }
+// .info-block tr:nth-child(odd) {
+//   background: #a8862f;
+// }
+.friends-block {
+  margin-top: 20px;
+  // background-color: #2a9d8f;
+
+  background-image: linear-gradient(to bottom right, #2a9d8f, #477fd3);
+
+  height: 265px;
+  border-right: 10px solid #c3dae6;
 }
 
-// .picname > h3 {
-//   color: white;
-// }
+.friends-header {
+  height: 30px;
+  background-color: #ffe39e;
+  color: #264653;
+}
+.friends-tab {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.photos-tab {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 17px;
+}
+
+.thumbnails {
+  margin: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.friends-btn-wrapper {
+  display: flex;
+  align-items: center;
+  // justify-content: center;
+}
+.friends-btn {
+  vertical-align: middle;
+  width: 110px;
+  height: 30px;
+  margin-bottom: 40px;
+}
+
+.friends-block button {
+  color: #264653;
+  background-color: #ffe39e;
+  border-radius: 5px;
+}
+.friends-button {
+  vertical-align: bottom;
+}
+
+.misc-block {
+  border-left: 10px solid #c3dae6;
+  // background-color: #2a9d8f;
+  background-image: linear-gradient(to bottom right, #2a9d8f, #477fd3);
+  height: 285px;
+  color: #264653;
+}
+
+.footer {
+  height: 60px;
+  margin-top: 20px;
+  background-color: #264653;
+}
 // ----------Userpage----------
 // -------------------------------------------------------------------------
 .rounded-bottom {
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
+}
+
+.table-header {
+  text-align: right;
+}
+
+.table-data {
+  text-align: left;
+  color: #ffe39e;
 }
 // -------------------------------------------------------------------------
 // ----------Misc.----------

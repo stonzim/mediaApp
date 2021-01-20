@@ -1,34 +1,34 @@
 import {
-  FETCH_MEMBERS_REQUEST,
-  FETCH_MEMBERS_SUCCESS,
-  FETCH_MEMBERS_FAILURE,
-} from "../types/memberTypes";
+  FETCH_PHOTOS_REQUEST,
+  FETCH_PHOTOS_SUCCESS,
+  FETCH_PHOTOS_FAILURE,
+} from "../types/photoTypes";
 
 const initialState = {
   loading: false,
-  members: [],
+  photos: [],
   error: "",
 };
 
-function membersReducer(state = initialState, action) {
+function photosReducer(state = initialState, action) {
   switch (action.type) {
-    case FETCH_MEMBERS_REQUEST:
+    case FETCH_PHOTOS_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case FETCH_MEMBERS_SUCCESS:
+    case FETCH_PHOTOS_SUCCESS:
       return {
         ...state,
         loading: false,
-        members: action.payload,
+        photos: action.payload,
         error: "",
       };
-    case FETCH_MEMBERS_FAILURE:
+    case FETCH_PHOTOS_FAILURE:
       return {
         ...state,
         loading: false,
-        members: [],
+        photos: [],
         error: action.payload,
       };
     default:
@@ -36,4 +36,4 @@ function membersReducer(state = initialState, action) {
   }
 }
 
-export default membersReducer;
+export default photosReducer;
