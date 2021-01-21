@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import Thumbnail from "../components/Thumbnail";
@@ -6,7 +6,8 @@ import Photo from "../components/Photo";
 import Post from "../components/Post";
 import { fetchFriends } from "../actions/friendActions";
 import { fetchPhotos } from "../actions/photoActions";
-import { fetchPosts } from "../actions/postActions";
+import { fetchPosts, addLike } from "../actions/postActions";
+
 import "react-tabs/style/react-tabs.css";
 
 function UserPage() {
@@ -16,6 +17,17 @@ function UserPage() {
   const photos = useSelector((state) => state.photos.photos);
   const posts = useSelector((state) => state.posts.posts);
   const friendsPreview = friends.slice(0, 5);
+  const [likes, setLikes] = useState();
+
+  useEffect(() => {
+    dispatch(fetchFriends(loggedInUser.id));
+  }, [dispatch, loggedInUser.id]);
+  useEffect(() => {
+    dispatch(fetchPhotos(loggedInUser.id));
+  }, [dispatch, loggedInUser.id]);
+  useEffect(() => {
+    dispatch(fetchPosts(loggedInUser.id));
+  }, [dispatch, loggedInUser.id, likes]);
 
   function getAge() {
     const today = new Date();
@@ -23,6 +35,11 @@ function UserPage() {
     let age = (today.getTime() - bd.getTime()) / 1000;
     age /= 60 * 60 * 24;
     return Math.abs(Math.round(age / 365.25));
+  }
+
+  function like(id) {
+    addLike(id);
+    setLikes(likes + 1);
   }
 
   const displayPosts = (
@@ -113,6 +130,8 @@ function UserPage() {
               name={p.username}
               date={p.date}
               post={p.post}
+              likes={p.likes}
+              function={() => like(p.id)}
             />
           ))}
         </div>
@@ -137,16 +156,6 @@ function UserPage() {
       </TabPanel>
     </Tabs>
   );
-
-  useEffect(() => {
-    dispatch(fetchFriends(loggedInUser.id));
-  }, [dispatch, loggedInUser.id]);
-  useEffect(() => {
-    dispatch(fetchPhotos(loggedInUser.id));
-  }, [dispatch, loggedInUser.id]);
-  useEffect(() => {
-    dispatch(fetchPosts(loggedInUser.id));
-  }, [dispatch, loggedInUser.id]);
 
   return (
     <div id="userpage">

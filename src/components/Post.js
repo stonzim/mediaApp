@@ -4,10 +4,11 @@ import "./Post.css";
 
 function Post(props) {
   const date = new Date(props.date);
-  const [likes, setLikes] = useState(0);
+  const [likes, setLikes] = useState(props.likes);
 
-  function like() {
+  function blah() {
     setLikes(likes + 1);
+    props.function();
   }
 
   return (
@@ -45,7 +46,7 @@ function Post(props) {
         <hr />
         <div className="row">
           <div className="col-12 post-btn-wrapper">
-            <button className="post-btn" onClick={like}>
+            <button className="post-btn" onClick={blah}>
               Like
             </button>
             <button className="post-btn">Comment</button>

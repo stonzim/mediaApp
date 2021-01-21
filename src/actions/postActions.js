@@ -40,3 +40,7 @@ export function fetchPosts(id) {
       });
   };
 }
+
+export function addLike(id) {
+  axios.get(`/posts/like/${id}`);
+}

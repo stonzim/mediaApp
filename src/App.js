@@ -17,7 +17,7 @@ function App() {
       <div id="topbar">
         <div className="container text-right">
           <div className="col-12"></div>
-          <p>StalkTalk</p>
+          StalkTalk
         </div>
       </div>
       <header className="App-header">
