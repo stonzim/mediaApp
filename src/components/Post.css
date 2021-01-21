@@ -33,3 +33,33 @@
   margin-left: 5px;
   margin-right: 5px;
 }
+
+.comment-box {
+  /* margin-left: 50px; */
+  margin: 0 auto;
+}
+
+.comment-box input {
+  border-radius: 5px;
+  background-color: #c3dae6;
+  width: 400px;
+  margin-bottom: 10px;
+
+  /* width: 50%; */
+}
+
+.disappear {
+  display: none;
+}
+
+.red {
+  background-color: #c95d6b;
+  vertical-align: middle;
+  width: 110px;
+  height: 30px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  color: #264653;
+  margin-left: 5px;
+  margin-right: 5px;
+}

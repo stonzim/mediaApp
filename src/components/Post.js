@@ -5,10 +5,15 @@ import "./Post.css";
 function Post(props) {
   const date = new Date(props.date);
   const [likes, setLikes] = useState(props.likes);
+  const [commentBool, setCommentBool] = useState(false);
 
-  function blah() {
+  function addLike() {
     setLikes(likes + 1);
     props.function();
+  }
+
+  function toggle() {
+    setCommentBool(!commentBool);
   }
 
   return (
@@ -45,11 +50,19 @@ function Post(props) {
         </div>
         <hr />
         <div className="row">
+          <div className={commentBool ? "comment-box" : "disappear"}>
+            <input placeholder="Enter comment..." />
+          </div>
           <div className="col-12 post-btn-wrapper">
-            <button className="post-btn" onClick={blah}>
-              Like
+            <button
+              className={commentBool ? "red" : "post-btn"}
+              onClick={commentBool ? toggle : addLike}
+            >
+              {commentBool ? "Cancel" : "Like"}
             </button>
-            <button className="post-btn">Comment</button>
+            <button className="post-btn" onClick={toggle}>
+              {commentBool ? "Submit" : "Comment"}
+            </button>
           </div>
         </div>
       </div>

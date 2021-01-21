@@ -7,8 +7,10 @@ import Post from "../components/Post";
 import { fetchFriends } from "../actions/friendActions";
 import { fetchPhotos } from "../actions/photoActions";
 import { fetchPosts, addLike } from "../actions/postActions";
+import ModalImage from "react-modal-image";
 
 import "react-tabs/style/react-tabs.css";
+import { propTypes } from "react-bootstrap/esm/Image";
 
 function UserPage() {
   const loggedInUser = useSelector((state) => state.login.loggedInUser);
@@ -17,7 +19,7 @@ function UserPage() {
   const photos = useSelector((state) => state.photos.photos);
   const posts = useSelector((state) => state.posts.posts);
   const friendsPreview = friends.slice(0, 5);
-  const [likes, setLikes] = useState();
+  const [change, setChange] = useState();
 
   useEffect(() => {
     dispatch(fetchFriends(loggedInUser.id));
@@ -27,7 +29,7 @@ function UserPage() {
   }, [dispatch, loggedInUser.id]);
   useEffect(() => {
     dispatch(fetchPosts(loggedInUser.id));
-  }, [dispatch, loggedInUser.id, likes]);
+  }, [dispatch, loggedInUser.id, change]);
 
   function getAge() {
     const today = new Date();
@@ -39,12 +41,11 @@ function UserPage() {
 
   function like(id) {
     addLike(id);
-    setLikes(likes + 1);
+    setChange(change + 1);
   }
 
   const displayPosts = (
-    // onSelect={(index) => console.log(index)}
-    <Tabs defaultIndex={0}>
+    <Tabs defaultIndex={0} onSelect={(index) => setChange(index)}>
       <TabList>
         <Tab>About</Tab>
         <Tab>Posts</Tab>
@@ -56,6 +57,7 @@ function UserPage() {
           <div className="row">
             <div className="col-6 info-block">
               <h3>Bio</h3>
+
               <table>
                 <tbody>
                   <tr>
@@ -151,6 +153,7 @@ function UserPage() {
         <div className="photos-tab">
           {photos.map((p) => (
             <Photo pic={p.pic_location} />
+            // <ModalImage small={p.pic_location} large={p.pic_location} alt="" />
           ))}
         </div>
       </TabPanel>
@@ -159,14 +162,10 @@ function UserPage() {
 
   return (
     <div id="userpage">
-      {/* <div className="banner-wrapper"> */}
       <div className="container">
         <div className="row">
-          {/* <div className="row"> */}
           <div className="col-1"></div>
-          {/* <div className="col-1"></div> */}
           <div className="col-10 profile-banner default-background">
-            {/* <div className="col-10 profile-banner default-background"> */}
             <div className="profile-pic">
               <img
                 className="border border-white"
