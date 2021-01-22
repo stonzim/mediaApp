@@ -7,10 +7,10 @@ import Post from "../components/Post";
 import { fetchFriends } from "../actions/friendActions";
 import { fetchPhotos } from "../actions/photoActions";
 import { fetchPosts, addLike } from "../actions/postActions";
-import ModalImage from "react-modal-image";
-
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 import "react-tabs/style/react-tabs.css";
-import { propTypes } from "react-bootstrap/esm/Image";
+// import { propTypes } from "react-bootstrap/esm/Image";
 
 function UserPage() {
   const loggedInUser = useSelector((state) => state.login.loggedInUser);
@@ -20,6 +20,7 @@ function UserPage() {
   const posts = useSelector((state) => state.posts.posts);
   const friendsPreview = friends.slice(0, 5);
   const [change, setChange] = useState();
+  // const ref = React.createRef();
 
   useEffect(() => {
     dispatch(fetchFriends(loggedInUser.id));
@@ -142,7 +143,7 @@ function UserPage() {
         <div className="friends-tab">
           {friends.map((u) => (
             <Thumbnail
-              className="thumb"
+              // className="thumb"
               name={u.username}
               pic={u.piclocation}
             />
@@ -150,10 +151,24 @@ function UserPage() {
         </div>
       </TabPanel>
       <TabPanel>
-        <div className="photos-tab">
+        <div className="friends-tab">
           {photos.map((p) => (
-            <Photo pic={p.pic_location} />
+            // <Photo pic={p.pic_location} />
             // <ModalImage small={p.pic_location} large={p.pic_location} alt="" />
+            <Popup
+              // className="photos-tab"
+              trigger={
+                // <Photo pic={p.pic_location} />
+                <div className="photos-tab">
+                  <img src={p.pic_location} alt="" width="80px" height="80px" />
+                </div>
+              }
+              modal
+            >
+              <div>
+                <img src={p.pic_location} alt="" />
+              </div>
+            </Popup>
           ))}
         </div>
       </TabPanel>

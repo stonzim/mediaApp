@@ -32,7 +32,7 @@ function Navbar() {
           </div>
           <div className="col-7">
             <ul className="ul-style">
-              <li className="li-style">
+              {/* <li className="li-style">
                 <NavLink
                   className="App-link"
                   to="/friends"
@@ -41,7 +41,7 @@ function Navbar() {
                 >
                   Members
                 </NavLink>
-              </li>
+              </li> */}
               <li className="li-style">
                 <NavLink
                   className="App-link"

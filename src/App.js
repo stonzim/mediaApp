@@ -32,7 +32,7 @@ function App() {
         ) : (
           <Redirect exact path="/login" />
         )}
-        <Route path="/friends" exact component={MembersPage} />
+        {/* <Route path="/friends" exact component={MembersPage} /> */}
         {!loggedIn ? (
           <Route path="/login" exact component={LoginPage} />
         ) : (
