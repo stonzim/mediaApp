@@ -178,7 +178,7 @@ function UserPage() {
   return (
     <div id="userpage">
       <div className="container">
-        <div className="row">
+        <div className="row header">
           <div className="col-1"></div>
           <div className="col-10 profile-banner default-background">
             <div className="profile-pic">
@@ -198,7 +198,7 @@ function UserPage() {
           </div>
           <div className="col-1"></div>
         </div>
-        <div className="row">
+        <div className="row body">
           <div className="col-1"></div>
           <div className="col-4 friends-block">
             <div className="row friends-header">

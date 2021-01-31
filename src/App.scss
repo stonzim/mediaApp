@@ -4,7 +4,14 @@
   text-align: center;
   color: #ce961f;
   clear: left;
+  display: flexbox;
+  flex-direction: column;
 }
+
+// .body {
+//   display: flexbox;
+//   flex-direction: column;
+// }
 
 #back-drop {
   background-color: #c3dae6;
@@ -36,6 +43,8 @@
 // ----------Navbar----------
 #navbar {
   background-color: #264653;
+  // position: fixed;
+  // top: 0;
 }
 .logo {
   height: 4rem;
@@ -135,6 +144,8 @@
 //   background: #a8862f;
 // }
 .posts-block {
+  display: flex;
+  flex-direction: column;
 }
 
 .friends-block {
@@ -210,12 +221,11 @@
 
 .misc-block {
   border-left: 10px solid #c3dae6;
-  // background-color: #2a9d8f;
   background-image: linear-gradient(to bottom right, #2a9d8f, #477fd3);
-  height: 285px;
+  // height: 285px;
   color: #264653;
-  // display: flex;
-  // flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .footer {
