@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./Post.css";
 
@@ -6,6 +6,17 @@ function Post(props) {
   const date = new Date(props.date);
   const [likes, setLikes] = useState(props.likes);
   const [commentBool, setCommentBool] = useState(false);
+  const [reply, setReply] = useState();
+
+  // function setSide() {
+  //   if(props.reply === 0) setReply(false)
+
+  // }
+
+  useEffect(() => {
+    if (props.reply === 0) setReply(false);
+    else setReply(true);
+  }, [props.reply]);
 
   function addLike() {
     setLikes(likes + 1);

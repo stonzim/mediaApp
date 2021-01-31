@@ -222,7 +222,7 @@
 .misc-block {
   border-left: 10px solid #c3dae6;
   background-image: linear-gradient(to bottom right, #2a9d8f, #477fd3);
-  // height: 285px;
+  min-height: 285px;
   color: #264653;
   display: flex;
   flex-direction: column;

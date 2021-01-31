@@ -133,6 +133,7 @@ function UserPage() {
               name={p.username}
               date={p.date}
               post={p.post}
+              reply={p.reply}
               likes={p.likes}
               function={() => like(p.id)}
             />
