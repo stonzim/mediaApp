@@ -1,3 +1,7 @@
+.post-container {
+  display: grid;
+}
+
 .post-header {
   height: 60px;
   border-bottom: 2px solid #ffe39e;
