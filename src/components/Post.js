@@ -6,7 +6,7 @@ function Post(props) {
   const date = new Date(props.date);
   const [likes, setLikes] = useState(props.likes);
   const [commentBool, setCommentBool] = useState(false);
-  const [reply, setReply] = useState();
+  const [reply, setReply] = useState(false);
 
   useEffect(() => {
     if (props.reply === 0) setReply(false);
@@ -23,10 +23,10 @@ function Post(props) {
   }
 
   return (
-    <div className="wrapper">
+    <div className={reply ? "wrapper-small" : "wrapper"}>
       <div className="header">
         <div className="pic">
-          <img src={props.pic} alt="" width="50px" height="50px"></img>
+          <img src={props.pic} alt="" width="60px" height="60px"></img>
         </div>
         <div className="name-date">
           <div className="name">
