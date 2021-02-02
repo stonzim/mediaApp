@@ -1,23 +1,86 @@
-.post-container {
+.wrapper {
   display: grid;
+  grid-template-areas:
+    "header header header header header header header header header header"
+    "line line line line line line line line line line"
+    "post post post post post post post post heart count"
+    "input input input input input input input input input input"
+    "buttons buttons buttons buttons buttons buttons buttons buttons buttons buttons";
+  justify-content: stretch;
+  /* background-image: linear-gradient(to bottom, #57a8df, #1865d8); */
 }
 
-.post-header {
-  height: 60px;
-  border-bottom: 2px solid #ffe39e;
+.header {
+  /* border-bottom: 2px solid #ffe39e; */
+  grid-area: header;
+  display: flex;
+  /* padding-bottom: 8px; */
 }
 
-.post-name {
-  margin-left: -15px;
+.name-date {
+  text-align: left;
 }
 
-.post-body {
+.pic {
+  grid-area: profile-pic;
+}
+
+.pic img {
+  border: 1px solid white;
+}
+
+.name {
+  grid-area: username;
+}
+
+.name p {
+  display: inline-block;
+  margin: 0 0 0 5px;
+  text-align: left;
+}
+
+.date {
+  grid-area: date;
+}
+
+.date p {
+  display: inline-block;
+  margin: 0 0 0 5px;
+  text-align: left;
+}
+
+.line {
+  grid-area: line;
+}
+
+.line hr {
+  border-top: 1px solid #ffe39e;
+  margin: 10px 0 0 0;
+}
+
+.post {
   margin-bottom: 10px;
   color: #ffe39e;
+  text-align: left;
+  grid-area: post;
+}
+
+.post p {
+  display: inline-block;
+  margin: 0;
+}
+
+.heart {
+  grid-area: heart;
 }
 
 .like-icon {
   margin-left: 5px;
+}
+
+.count {
+  min-width: 15px;
+  grid-area: count;
 }
 
 .like-count {
@@ -26,30 +89,43 @@
   color: #e96315;
 }
 
+.input {
+  /* margin: 0 auto; */
+  grid-area: input;
+}
+
+.input input {
+  border-radius: 5px;
+  background-color: #c3dae6;
+  width: 450px;
+  margin-bottom: 10px;
+}
+
+.buttons {
+  grid-area: buttons;
+  /* justify-content: left; */
+}
+
 .post-btn {
   vertical-align: middle;
   width: 110px;
   height: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   background-color: #ffe39e;
   border-radius: 5px;
   color: #264653;
   margin-left: 5px;
   margin-right: 5px;
+  outline: none;
 }
 
-.comment-box {
-  /* margin-left: 50px; */
-  margin: 0 auto;
+.post-btn:focus {
+  outline: none;
+  box-shadow: none;
 }
 
-.comment-box input {
-  border-radius: 5px;
-  background-color: #c3dae6;
-  width: 400px;
-  margin-bottom: 10px;
-
-  /* width: 50%; */
+.post-btn:hover {
+  background-color: #ecc769;
 }
 
 .disappear {
@@ -61,9 +137,18 @@
   vertical-align: middle;
   width: 110px;
   height: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   border-radius: 5px;
   color: #264653;
   margin-left: 5px;
   margin-right: 5px;
+  outline: none;
+}
+.red:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.red:hover {
+  background-color: #af2c3d;
 }

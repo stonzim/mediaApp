@@ -25,24 +25,24 @@ function Post(props) {
   return (
     <div className="wrapper">
       <div className="header">
-        <div className="profile-pic">
-          <img
-            className="border border-white"
-            src={props.pic}
-            alt=""
-            width="50px"
-            height="50px"
-          ></img>
+        <div className="pic">
+          <img src={props.pic} alt="" width="50px" height="50px"></img>
         </div>
-        <div className="username">
-          {props.name}
-          <br />
-          {date.toLocaleDateString()}
+        <div className="name-date">
+          <div className="name">
+            <p>{props.name}</p>
+          </div>
+
+          <div className="date">
+            <p>{date.toLocaleDateString()}</p>
+          </div>
         </div>
       </div>
 
       <div className="post">
-        {props.post}
+        <p>{props.post}</p>
+      </div>
+      <div className="heart">
         <img
           className="like-icon"
           src="http://localhost:3001/images/heart.png"
@@ -50,24 +50,29 @@ function Post(props) {
           width="15px"
           height="15px"
         />
+      </div>
+      <div className="count">
         <span className="like-count">{likes}</span>
       </div>
-      <hr />
-      <div>
-        <div className={commentBool ? "input" : "disappear"}>
-          <input placeholder="Enter comment..." />
-        </div>
-        <div className="buttons">
-          <button
-            className={commentBool ? "red" : "post-btn"}
-            onClick={commentBool ? toggle : addLike}
-          >
-            {commentBool ? "Cancel" : "Like"}
-          </button>
-          <button className="post-btn" onClick={toggle}>
-            {commentBool ? "Submit" : "Comment"}
-          </button>
-        </div>
+
+      <div className="line">
+        <hr />
+      </div>
+
+      <div className={commentBool ? "input" : "disappear"}>
+        <input placeholder="Enter comment..." />
+      </div>
+
+      <div className="buttons">
+        <button
+          className={commentBool ? "red" : "post-btn"}
+          onClick={commentBool ? toggle : addLike}
+        >
+          {commentBool ? "Cancel" : "Like"}
+        </button>
+        <button className="post-btn" onClick={toggle}>
+          {commentBool ? "Submit" : "Comment"}
+        </button>
       </div>
     </div>
   );
