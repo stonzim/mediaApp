@@ -13,6 +13,7 @@ import { getProfile } from "../actions/otherActions";
 import { useHistory } from "react-router-dom";
 
 function OtherPage() {
+  const loggedInUser = useSelector((state) => state.login.loggedInUser);
   const otherUser = useSelector((state) => state.other.otherUser);
   const dispatch = useDispatch();
   const friends = useSelector((state) => state.friends.friends);
@@ -47,8 +48,12 @@ function OtherPage() {
   }
 
   function push(user) {
-    dispatch(getProfile(user.username));
-    history.push("/other");
+    if (user.username === loggedInUser.username) {
+      history.push("/profile");
+    } else {
+      dispatch(getProfile(user.username));
+      history.push("/other");
+    }
   }
 
   function selectFriendsTab() {
@@ -232,12 +237,14 @@ function OtherPage() {
               ))}
               <div
                 className={
-                  friendsPreview.length === 0
+                  friendsPreview.length <= 4
                     ? "disappear"
                     : "friends-btn-wrapper"
                 }
               >
-                <button className="friends-btn">See all...</button>
+                <button className="friends-btn" onClick={selectFriendsTab}>
+                  See all...
+                </button>
               </div>
             </div>
           </div>

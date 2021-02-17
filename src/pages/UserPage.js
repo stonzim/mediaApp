@@ -224,13 +224,18 @@ function UserPage() {
             <div className="row thumbnails">
               {friendsPreview.map((u) => (
                 <Thumbnail
-                  // className="thumb"
                   name={u.username}
                   pic={u.piclocation}
                   function={() => push(u)}
                 />
               ))}
-              <div className="friends-btn-wrapper">
+              <div
+                className={
+                  friendsPreview.length <= 4
+                    ? "disappear"
+                    : "friends-btn-wrapper"
+                }
+              >
                 <button className="friends-btn" onClick={selectFriendsTab}>
                   See all...
                 </button>
