@@ -4,7 +4,7 @@ import "./Thumbnail.css";
 function Thumbnail(props) {
   return (
     <div>
-      <div className="thumbnail">
+      <div className="thumbnail" onClick={props.function}>
         <img
           className="border border-white"
           src={props.pic}

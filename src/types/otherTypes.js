@@ -1,0 +1,3 @@
+export const OTHER_REQUEST = "OTHER_REQUEST";
+export const OTHER_SUCCESS = "OTHER_SUCCESS";
+export const OTHER_FAILURE = "OTHER_FAILURE";

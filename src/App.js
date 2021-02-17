@@ -2,15 +2,17 @@ import { Route, NavLink, Redirect, useHistory } from "react-router-dom";
 import "./App.scss";
 import AboutPage from "./pages/AboutPage";
 import WelcomePage from "./pages/WelcomePage";
-import MembersPage from "./pages/MembersPage";
+// import MembersPage from "./pages/MembersPage";
 import SignUpPage from "./pages/SignUpPage";
 import UserPage from "./pages/UserPage";
 import LoginPage from "./pages/LoginPage";
-import { useSelector, useDispatch } from "react-redux";
+import OtherPage from "./pages/OtherPage";
+import { useSelector } from "react-redux";
 import Navbar from "./components/navbar";
 
 function App() {
   const loggedIn = useSelector((state) => state.login.loggedIn);
+  const present = useSelector((state) => state.other.present);
 
   return (
     <div className="container-fluid">
@@ -56,6 +58,11 @@ function App() {
             );
           }}
         />
+        {present ? (
+          <Route path="/other" exact component={OtherPage} />
+        ) : (
+          <Redirect exact path="/home" />
+        )}
       </header>
     </div>
   );

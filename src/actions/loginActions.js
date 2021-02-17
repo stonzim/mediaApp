@@ -12,10 +12,10 @@ export function loginRequest() {
   };
 }
 
-export function loginSuccess(username) {
+export function loginSuccess(user) {
   return {
     type: LOGIN_SUCCESS,
-    payload: username,
+    payload: user,
   };
 }
 

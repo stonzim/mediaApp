@@ -9,33 +9,29 @@ import { fetchPosts, addLike } from "../actions/postActions";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import "react-tabs/style/react-tabs.css";
-import { getProfile } from "../actions/otherActions";
-import { useHistory } from "react-router-dom";
 
-function UserPage() {
-  const loggedInUser = useSelector((state) => state.login.loggedInUser);
+function OtherPage() {
+  const otherUser = useSelector((state) => state.other.otherUser);
   const dispatch = useDispatch();
   const friends = useSelector((state) => state.friends.friends);
   const photos = useSelector((state) => state.photos.photos);
   const posts = useSelector((state) => state.posts.posts);
   const friendsPreview = friends.slice(0, 5);
   const [change, setChange] = useState();
-  const [tabIndex, setTabIndex] = useState(0);
-  const history = useHistory();
 
   useEffect(() => {
-    dispatch(fetchFriends(loggedInUser.id));
-  }, [dispatch, loggedInUser.id]);
+    dispatch(fetchFriends(otherUser.id));
+  }, [dispatch, otherUser.id]);
   useEffect(() => {
-    dispatch(fetchPhotos(loggedInUser.id));
-  }, [dispatch, loggedInUser.id]);
+    dispatch(fetchPhotos(otherUser.id));
+  }, [dispatch, otherUser.id]);
   useEffect(() => {
-    dispatch(fetchPosts(loggedInUser.id));
-  }, [dispatch, loggedInUser.id, change]);
+    dispatch(fetchPosts(otherUser.id));
+  }, [dispatch, otherUser.id, change]);
 
   function getAge() {
     const today = new Date();
-    const bd = new Date(loggedInUser.birthdate);
+    const bd = new Date(otherUser.birthdate);
     let age = (today.getTime() - bd.getTime()) / 1000;
     age /= 60 * 60 * 24;
     return Math.abs(Math.round(age / 365.25));
@@ -46,24 +42,8 @@ function UserPage() {
     setChange(change + 1);
   }
 
-  function push(user) {
-    dispatch(getProfile(user.username));
-    history.push("/other");
-  }
-
-  function selectFriendsTab() {
-    setTabIndex(2);
-  }
-
   const displayPosts = (
-    <Tabs
-      // defaultIndex={0}
-      selectedIndex={tabIndex}
-      onSelect={(index) => {
-        setTabIndex(index);
-        setChange(index);
-      }}
-    >
+    <Tabs defaultIndex={0} onSelect={(index) => setChange(index)}>
       <TabList>
         <Tab>About</Tab>
         <Tab>Posts</Tab>
@@ -81,7 +61,7 @@ function UserPage() {
                   <tr>
                     <th className="table-header">Name:</th>
                     <td className="table-data">
-                      {loggedInUser.firstname + " " + loggedInUser.lastname}
+                      {otherUser.firstname + " " + otherUser.lastname}
                     </td>
                   </tr>
                   <tr>
@@ -90,19 +70,19 @@ function UserPage() {
                   </tr>
                   <tr>
                     <th className="table-header">Email:</th>
-                    <td className="table-data">{loggedInUser.email}</td>
+                    <td className="table-data">{otherUser.email}</td>
                   </tr>
                   <tr>
                     <th className="table-header">University:</th>
-                    <td className="table-data">{loggedInUser.university}</td>
+                    <td className="table-data">{otherUser.university}</td>
                   </tr>
                   <tr>
                     <th className="table-header">Work:</th>
-                    <td className="table-data">{loggedInUser.work}</td>
+                    <td className="table-data">{otherUser.work}</td>
                   </tr>
                   <tr>
                     <th className="table-header">Nationality:</th>
-                    <td className="table-data">{loggedInUser.nationality}</td>
+                    <td className="table-data">{otherUser.nationality}</td>
                   </tr>
                 </tbody>
               </table>
@@ -160,11 +140,7 @@ function UserPage() {
       <TabPanel>
         <div className="friends-tab">
           {friends.map((u) => (
-            <Thumbnail
-              name={u.username}
-              pic={u.piclocation}
-              function={() => push(u)}
-            />
+            <Thumbnail name={u.username} pic={u.piclocation} />
           ))}
         </div>
       </TabPanel>
@@ -198,15 +174,15 @@ function UserPage() {
             <div className="profile-pic">
               <img
                 className="border border-white"
-                src={loggedInUser.piclocation}
+                src={otherUser.piclocation}
                 alt=""
                 width="150px"
                 height="150px"
               ></img>
             </div>
             <h3 className="username">
-              {loggedInUser.username.charAt(0).toUpperCase() +
-                loggedInUser.username.slice(1)}
+              {otherUser.username.charAt(0).toUpperCase() +
+                otherUser.username.slice(1)}
             </h3>
             <div className="overlay"></div>
           </div>
@@ -230,10 +206,14 @@ function UserPage() {
                   pic={u.piclocation}
                 />
               ))}
-              <div className="friends-btn-wrapper">
-                <button className="friends-btn" onClick={selectFriendsTab}>
-                  See all...
-                </button>
+              <div
+                className={
+                  friendsPreview.length === 0
+                    ? "disappear"
+                    : "friends-btn-wrapper"
+                }
+              >
+                <button className="friends-btn">See all...</button>
               </div>
             </div>
           </div>
@@ -252,4 +232,4 @@ function UserPage() {
   );
 }
 
-export default UserPage;
+export default OtherPage;
