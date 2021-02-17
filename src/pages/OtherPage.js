@@ -9,6 +9,8 @@ import { fetchPosts, addLike } from "../actions/postActions";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import "react-tabs/style/react-tabs.css";
+import { getProfile } from "../actions/otherActions";
+import { useHistory } from "react-router-dom";
 
 function OtherPage() {
   const otherUser = useSelector((state) => state.other.otherUser);
@@ -18,6 +20,8 @@ function OtherPage() {
   const posts = useSelector((state) => state.posts.posts);
   const friendsPreview = friends.slice(0, 5);
   const [change, setChange] = useState();
+  const [tabIndex, setTabIndex] = useState(0);
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(fetchFriends(otherUser.id));
@@ -42,8 +46,23 @@ function OtherPage() {
     setChange(change + 1);
   }
 
+  function push(user) {
+    dispatch(getProfile(user.username));
+    history.push("/other");
+  }
+
+  function selectFriendsTab() {
+    setTabIndex(2);
+  }
+
   const displayPosts = (
-    <Tabs defaultIndex={0} onSelect={(index) => setChange(index)}>
+    <Tabs
+      selectedIndex={tabIndex}
+      onSelect={(index) => {
+        setTabIndex(index);
+        setChange(index);
+      }}
+    >
       <TabList>
         <Tab>About</Tab>
         <Tab>Posts</Tab>
@@ -140,7 +159,11 @@ function OtherPage() {
       <TabPanel>
         <div className="friends-tab">
           {friends.map((u) => (
-            <Thumbnail name={u.username} pic={u.piclocation} />
+            <Thumbnail
+              name={u.username}
+              pic={u.piclocation}
+              function={() => push(u)}
+            />
           ))}
         </div>
       </TabPanel>
@@ -204,6 +227,7 @@ function OtherPage() {
                   className="thumb"
                   name={u.username}
                   pic={u.piclocation}
+                  function={() => push(u)}
                 />
               ))}
               <div

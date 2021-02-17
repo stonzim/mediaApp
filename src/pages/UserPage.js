@@ -57,7 +57,6 @@ function UserPage() {
 
   const displayPosts = (
     <Tabs
-      // defaultIndex={0}
       selectedIndex={tabIndex}
       onSelect={(index) => {
         setTabIndex(index);
@@ -225,9 +224,10 @@ function UserPage() {
             <div className="row thumbnails">
               {friendsPreview.map((u) => (
                 <Thumbnail
-                  className="thumb"
+                  // className="thumb"
                   name={u.username}
                   pic={u.piclocation}
+                  function={() => push(u)}
                 />
               ))}
               <div className="friends-btn-wrapper">
